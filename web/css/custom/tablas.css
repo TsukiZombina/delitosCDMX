@@ -1,0 +1,22 @@
+/************
+//-----------------------------
+// TABLAS
+//-----------------------------
+************/
+th {
+    font-style: italic;
+    border: none !important;
+    border-bottom: 2px solid #EC008A !important;
+}
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    color: #EC008A;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+    vertical-align: middle;
+}
+
+tbody > tr > td{
+    font-weight: normal;
+}

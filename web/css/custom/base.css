@@ -1,0 +1,235 @@
+/************ 
+//--------------------------------
+// GENERAL
+//-------------------------------
+************/
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5em;
+    margin-bottom: 80px;
+    background-color: #efefef;
+}
+
+/************ 
+//-------------------------------
+// CABECERA
+//-------------------------------
+************/
+header {
+    box-shadow: 0px 0px 3px #999999;
+}
+
+.img-header{
+    background-color: #F7F7F7;
+    padding: 42px 70px;
+    display: table;
+    width: 100%;
+    z-index: 5;
+}
+
+/*
+ * Navegación
+ */
+.navbar{
+    display: table;
+    width: 100%;
+    background-color: #ffffff;
+    margin-bottom: 20px;
+    border-radius: 0px;
+    box-shadow: 0px 0px 3px #999999;
+}
+
+.navbar-default .navbar-brand {
+    padding: 21px 14px;
+    display: none;
+    text-align: center;
+    font-weight: bolder;
+    color: #333333;
+    font-size: 16px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    padding: 21px 14px;
+    margin-right: 1px;
+    display: block;
+    text-align: center;
+    font-weight: bolder;
+    color: #333333;
+    font-size: 16px;
+}
+
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover{
+    color: #333333;
+    cursor: default;
+}
+
+.navbar-default .navbar-nav > li > a:focus, .navbar-default .navbar-nav > li > a:hover{
+    cursor: pointer;
+    color: #EC008A;
+    box-shadow: 0px 5px 0px #EC008A;
+}
+
+.navbar-default .navbar-toggle .icon-bar{
+    background-color: #333333;
+}
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover{
+    color: #EC008A;
+    background: #ffffff;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a{
+    color: #333333;
+}
+
+.dropdown-menu{
+    background: #ffffff;
+}
+
+.dropdown-menu > li > a{
+    font-size: 16px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    text-align: right;
+    font-weight: bolder;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:focus, .navbar-default .navbar-nav > .open > a:hover{
+    background: #ffffff;
+    color: #EC008A;
+    box-shadow: 0px 5px 0px #EC008A;
+}
+
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus{
+    color: #EC008A;
+}
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus, .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover{
+    background: #ffffff;
+    color: #EC008A;
+}
+
+/************ 
+//------------------------------
+// CONTENIDO
+//------------------------------
+************/
+
+.main {
+    background: #FAFAFA;
+    border: solid 1px #dddddd;
+    padding: 35px;
+    margin: 0;
+}
+
+.add {
+    background: #FAFAFA;
+    border: solid 1px #dddddd;
+    padding: 20px 35px;
+    margin: 0;
+}
+
+.content {
+    max-width: 1200px;
+    padding-bottom: 20px;
+}
+
+.content-title{
+    font-size: 29px;
+    line-height: 35px;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.icon-title{
+    color: #EC008A;
+}
+
+.content > .main > p, .content > .add > p {
+    text-align: center;
+}
+
+.content-img {
+    width: 50%;
+    display: inline-block;
+}
+
+.social-box{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.social-box > li {
+    display: inline-block;
+    margin: 0 50px;
+}
+
+/************
+//-----------------------------
+// PIE PÁGINA
+//-----------------------------
+************/
+.footer {
+    background: #EC008A;
+    color: white;
+    height: 50px;
+    border-radius: 4px;
+}
+
+.container > .text-muted {
+    color: white;
+    margin: 15px 0;
+}
+
+.footer a {
+    color: white;
+}
+
+/************
+//-----------------------------
+// Responsive Media
+//-----------------------------
+************/
+@media (max-width: 700px){
+    .img-header{
+        display: none;
+        height: 0px;
+    }
+
+    .navbar{
+        top: 0;
+    }
+
+    body{
+        padding-top: 0px;
+    }
+
+}
+
+@media (max-width: 768px){
+    .social-box > li {
+        margin-bottom: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+
+    .container > .text-muted {
+        color: white;
+        margin: 5px 0;
+    }
+}
+
+@media (max-width: 767px){
+    .navbar-default .navbar-brand {
+        display: block;
+    }
+}
