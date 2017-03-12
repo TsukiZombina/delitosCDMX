@@ -9,9 +9,8 @@ public class Delito {
     }
 
     public Delito(int id_delito, String nombre_delito) {
-
-        this.setId_delito(id_delito);
-        this.setNombre_delito(nombre_delito);
+        this.id_delito = id_delito;
+        this.nombre_delito = nombre_delito;
     }
 
     public int getId_delito() {

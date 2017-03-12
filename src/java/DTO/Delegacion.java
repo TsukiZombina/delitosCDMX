@@ -9,8 +9,8 @@ public class Delegacion {
     }
 
     public Delegacion(int id_delegacion, String nombre_delegacion) {
-        this.setid_delegacion(id_delegacion);
-        this.setnombre_delegacion(nombre_delegacion);
+        this.id_delegacion = id_delegacion;
+        this.nombre_delegacion = nombre_delegacion;
     }
 
     public int getid_delegacion() {

@@ -9,9 +9,8 @@ public class Colonia {
     }
 
     public Colonia(int id_colonia, String nombre_colonia) {
-
-        this.setid_colonia(id_colonia);
-        this.setnombre_colonia(nombre_colonia);
+        this.id_colonia = id_colonia;
+        this.nombre_colonia = nombre_colonia;
     }
 
     public int getid_colonia() {
