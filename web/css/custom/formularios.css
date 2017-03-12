@@ -89,6 +89,10 @@ select[multiple]{
     overflow: hidden;
 }
 
+textarea{
+    resize: none;
+}
+
 .input-group-addon {
     color: #555;
     background-color: #fff;
