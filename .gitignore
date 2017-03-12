@@ -10,9 +10,6 @@ build.xml
 nbactions.xml
 .nb-gradle/
 
-#but not
-!.WEB-INF/
-
 # Java
 *.class
 
