@@ -5,7 +5,7 @@
  */
 package Modelo;
 
-import DTO.Delito;
+import DTO.Colonia;
 import java.io.Serializable;
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,39 +14,39 @@ import java.util.ArrayList;
  *
  * @author Arturo Camargo
  */
-public class DelitoDAO implements Serializable {
-    private static DelitoDAO delitoDAO;
-    private ArrayList<Delito> listaDelitos;
+public class ColoniaDAO implements Serializable {
+    private static ColoniaDAO coloniaDAO;
+    private ArrayList<Colonia> listaColonias;
 
-    private DelitoDAO(){}
+    private ColoniaDAO(){}
     
-    public static DelitoDAO get(){
-        if (delitoDAO == null){
-            delitoDAO = new DelitoDAO();
+    public static ColoniaDAO get() {
+        if (coloniaDAO == null){
+            coloniaDAO = new ColoniaDAO();
         }
-        return delitoDAO;
+        return coloniaDAO;
     }
     
-    private void buscarTodos(){
+    private void buscarTodos() {
         Connection conn = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
         
         try {
             conn = UConnection.getConnection();
-            String sql = "SELECT * FROM delito;";
+            String sql = "SELECT * FROM colonia;";
             
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
 
-            listaDelitos = new ArrayList<>();
-            Delito d;
+            listaColonias = new ArrayList<>();
+            Colonia d;
 
             while (rs.next()) {
-                d = new Delito();
-                d.setId_delito(rs.getInt("id_delito"));
-                d.setNombre_delito(rs.getString("nombre_delito"));
-                listaDelitos.add(d);
+                d = new Colonia();
+                d.setid_colonia(rs.getInt("id_colonia"));
+                d.setnombre_colonia(rs.getString("nombre_colonia"));
+                listaColonias.add(d);
             }
         } 
         catch (Exception ex) {
@@ -68,25 +68,22 @@ public class DelitoDAO implements Serializable {
         }
     }
     
-    public Delito buscarPorId(int id) {
-        if(listaDelitos == null){
+    public Colonia buscarPorId(int id) {
+        if(listaColonias == null){
             buscarTodos();
         }
-        for(int i = 0; i < listaDelitos.size(); i++){
-            if(listaDelitos.get(i).getId_delito() == id){
-                return listaDelitos.get(i);
+        for(int i = 0; i < listaColonias.size(); i++){
+            if(listaColonias.get(i).getid_colonia() == id){
+                return listaColonias.get(i);
             }
         }
         return null;
     }
     
-    public ArrayList<Delito> getListaDelitos(){
-        if(listaDelitos == null){
+    public ArrayList<Colonia> getListaDelegacion() {
+        if(listaColonias == null){
             buscarTodos();
         }
-        return listaDelitos;
+        return listaColonias;
     }
-    
-    
-    
 }

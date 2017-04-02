@@ -41,7 +41,7 @@
                             <div class="form-group">
                                 <label for="slcdelito" class="control-label col-xs-12 col-sm-1">Delito</label>
                                 <div class="col-xs-12 col-sm-11">
-                                    <select class="form-control" id="slcdelito" name="Delito" tabindex="3" size="19" multiple>
+                                    <select class="form-control" id="slcdelito" name="delitos" tabindex="3" size="19" multiple>
                                         <option value="" disabled selected hidden></option>
                                         <option value="1">Homicidio doloso</option>
                                         <option value="2">Lesiones por arma de fuego</option>
@@ -69,36 +69,42 @@
                         <fieldset>
                             <legend>Lugar del Delito</legend>
                             <div class="form-group ">
-                                <label for="txtcalle1" class="control-label col-xs-12 col-sm-1">Calle</label>
+                                <label for="txtcalle1" class="control-label col-xs-12 col-sm-1">Calle 1</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcalle1" name="calle" tabindex="4" type="text">
+                                    <input class="form-control" id="txtcalle1" name="calle1" tabindex="4" type="text">
                                 </span>
-                                <label for="txtcolonia" class="control-label col-xs-12 col-sm-1">Colonia</label>
+                                <label for="txtcalle2" class="control-label col-xs-12 col-sm-1">Calle 2</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcolonia" name="colonia" tabindex="5" type="text"> 
+                                    <input class="form-control" id="txtcalle1" name="calle2" tabindex="5" type="text">
+                                </span>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtcolonia" class="control-label col-xs-12 col-sm-1">Colonia</label>
+                                <span class="col-xs-12 col-sm-11">
+                                    <input class="form-control" id="txtcolonia" name="colonia" tabindex="6" type="text"> 
                                 </span>
                             </div>
                             <div class="form-group">
                                 <label for="txtdeleg" class="control-label col-xs-12 col-sm-1">Delegaci&oacute;n</label>
                                 <span class="col-xs-12 col-sm-11">
-                                    <select class="form-control" id="slcdeleg" name="delegacion" tabindex="6" size="16" multiple>
-                                        <option value="" disabled selected hidden></option>
-                                        <option value="1">Alvaro Obregon</option>
-                                        <option value="2">Azcapotzalco</option>
-                                        <option value="3">Benito Juarez</option>
-                                        <option value="4">Coyoacan</option>
-                                        <option value="5">Cuajimalpa de Morelos</option>
-                                        <option value="6">Cuauhtemoc</option>
-                                        <option value="7">Gustavo A Madero</option>
-                                        <option value="8">Iztacalco</option>
-                                        <option value="9">Iztapalapa</option>
-                                        <option value="10">La Magdalena Contreras</option>
-                                        <option value="11">Miguel Hidalgo</option>
-                                        <option value="12">Milpa Alta</option>
-                                        <option value="13">Tlahuac</option>
-                                        <option value="14">Tlalpan</option>
-                                        <option value="15">Venustiano Carranza</option>
-                                        <option value="16">Xochimilco</option>
+                                    <select class="form-control" id="slcdeleg" name="delegacion" tabindex="7" size="16" multiple>
+                                        <option value="1" disabled selected hidden></option>
+                                        <option value="2">Alvaro Obregon</option>
+                                        <option value="3">Azcapotzalco</option>
+                                        <option value="4">Benito Juarez</option>
+                                        <option value="5">Coyoacan</option>
+                                        <option value="6">Cuajimalpa de Morelos</option>
+                                        <option value="7">Cuauhtemoc</option>
+                                        <option value="8">Gustavo A Madero</option>
+                                        <option value="9">Iztacalco</option>
+                                        <option value="10">Iztapalapa</option>
+                                        <option value="11">La Magdalena Contreras</option>
+                                        <option value="12">Miguel Hidalgo</option>
+                                        <option value="13">Milpa Alta</option>
+                                        <option value="14">Tlahuac</option>
+                                        <option value="15">Tlalpan</option>
+                                        <option value="16">Venustiano Carranza</option>
+                                        <option value="17">Xochimilco</option>
                                     </select>
                                 </span>
                             </div>
@@ -114,7 +120,7 @@
                             </div>
                         </fieldset>
                         <input class="btn btn-primary col-sm-offset-9" name="clean" tabindex="11" value="Limpiar" type="reset">
-                        <input class="btn btn-primary pull-right" name="submit" tabindex="12" value="Registrar" type="submit">
+                        <input class="btn btn-primary pull-right" name="submit" tabindex="12" value="Consultar" type="submit">
                     </form>
                 </div> <!-- /article -->
             </div>
