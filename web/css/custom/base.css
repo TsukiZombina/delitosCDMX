@@ -3,14 +3,18 @@
 // GENERAL
 //-------------------------------
 ************/
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 body {
-    margin: 0;
+    margin: 0 0 150px; /* bottom = footer height */
     padding: 0;
     font-family: Verdana, Arial, Helvetica, sans-serif;
     color: #666;
     font-size: 16px;
     line-height: 1.5em;
-    margin-bottom: 80px;
     background-color: #efefef;
 }
 
@@ -25,7 +29,7 @@ header {
 
 .img-header{
     background-color: #F7F7F7;
-    padding: 42px 70px;
+    padding: 10px 45px;
     display: table;
     width: 100%;
     z-index: 5;
@@ -148,6 +152,10 @@ header {
     margin-bottom: 5px;
 }
 
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+
 .icon-title{
     color: #EC008A;
 }
@@ -173,6 +181,30 @@ header {
     margin: 0 50px;
 }
 
+.carousel-control.left {
+  background-image: none;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+}
+
+.carousel-control.right {
+  background-image: none;
+  background-repeat: repeat-x;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+}
+
+.carousel-control {
+    color: #666;
+}
+
+.carousel-control:hover {
+    color: #EC008A;
+}
+
+#myCarousel {
+    padding-bottom: 15px;
+}
+
 /************
 //-----------------------------
 // PIE PÁGINA
@@ -180,9 +212,18 @@ header {
 ************/
 .footer {
     background: #EC008A;
+    height: 150px;
     color: white;
-    height: 50px;
-    border-radius: 4px;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.container > .social-text {
+    margin: 15px 0;
+    font-size: 20px;
 }
 
 .container > .text-muted {
@@ -192,6 +233,20 @@ header {
 
 .footer a {
     color: white;
+}
+
+.btn-footer, .btn-footer {
+    border: solid 1px white;
+}
+
+.btn-footer:hover, .btn-footer:hover {
+    color: white;
+}
+
+.btn-social-icon.btn-lg>:first-child:hover {
+    font-size: 2.1em;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s; 
 }
 
 /************
