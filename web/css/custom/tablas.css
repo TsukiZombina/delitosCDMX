@@ -21,7 +21,12 @@ tbody > tr > td{
     font-weight: normal;
 }
 
-.pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
+.pagination > .active > a, 
+.pagination > .active > span, 
+.pagination > .active > a:hover, 
+.pagination > .active > span:hover, 
+.pagination > .active > a:focus, 
+.pagination > .active > span:focus {
   background-color: #EC008A !important;
-  border-color: #EC008A;
+  border-color: #EC008A !important;
 }
