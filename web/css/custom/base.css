@@ -193,7 +193,7 @@ header {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
 }
 
-.carousel-control {
+.carousel-control, .carousel-control:focus {
     color: #666;
 }
 
@@ -239,7 +239,7 @@ header {
     border: solid 1px white;
 }
 
-.btn-footer:hover, .btn-footer:hover {
+.btn-footer:focus, .btn-footer:hover {
     color: white;
 }
 

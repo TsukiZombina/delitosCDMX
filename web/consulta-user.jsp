@@ -1,29 +1,39 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<t:gral_layout title="Delitos CDMX: Denuncia">
-    
+<t:user_layout title="Delitos CDMX: Consulta">
+
     <jsp:attribute name="head_area">
         <link href="css/bootstrap-datepicker3.min.css" rel="stylesheet">
         <link href="css/clockpicker.css" rel="stylesheet">
         <link href="css/custom/formularios.css" rel="stylesheet">
     </jsp:attribute>
-        
+
     <jsp:attribute name="body_area">
         <section>
             <div class="content center-block">
-                <div class="content-title"><span class="glyphicon glyphicon-stop icon-title"></span> Denuncia de Delito</div>
+                <div class="content-title"><span class="glyphicon glyphicon-stop icon-title"></span> Consulta de Delitos</div>
                 <div class="main">
-                    <form method="post"  class="form-horizontal" action="altaDelito">
+                    <form method="post"  class="form-horizontal" action="consultaDelito">
                         <fieldset>
-                            <legend>Fecha y Hora del Delito</legend>
-                            <div class="form-group ">
-                                <label for="txtfecha" class="control-label col-xs-12 col-sm-1">Fecha</label>
-                                <span class="col-xs-12 col-sm-5">
-                                    <input id="txtfecha" class="form-control" name="fecha" placeholder="Formato AAAA-MM-DD" required="" tabindex="1" type="text">
-                                </span>
-                                <label for="txthora" class="control-label col-xs-12 col-sm-1">Hora</label>
-                                <span class="col-xs-12 col-sm-5">
-                                    <input id="txthora" class="form-control" name="hora" placeholder="Formato de 24 hrs" required="" tabindex="2" type="text"> 
-                                </span>
+                            <legend>Fecha y Hora de los Delitos</legend>
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-1">Fechas</label>
+                                <div class="col-xs-12 col-sm-11">
+                                    <div class="input-group input-daterange">
+                                        <input id="txtfecha1" class="form-control" name="fechaStart" tabindex="1" type="text">
+                                        <span class="input-group-addon">a</span>
+                                        <input id="txtfecha2" class="form-control" name="fechaEnd" tabindex="2" type="text">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-xs-12 col-sm-1">Horas</label>
+                                <div class="col-xs-12 col-sm-11">
+                                    <div class="input-group">
+                                        <input id="txthora1" class="form-control" name="horaStart" tabindex="3" type="text">
+                                        <span class="input-group-addon">a</span>
+                                        <input id="txthora2" class="form-control" name="horaEnd" tabindex="4" type="text">
+                                    </div>
+                                </div>
                             </div>
                         </fieldset>
                         <fieldset>
@@ -31,7 +41,7 @@
                             <div class="form-group">
                                 <label for="slcdelito" class="control-label col-xs-12 col-sm-1">Delito</label>
                                 <div class="col-xs-12 col-sm-11">
-                                    <select class="form-control" id="slcdelito" name="Delito" required="" tabindex="3" size="1">
+                                    <select class="form-control" id="slcdelito" name="Delito" tabindex="3" size="19" multiple>
                                         <option value="" disabled selected hidden></option>
                                         <option value="1">Homicidio doloso</option>
                                         <option value="2">Lesiones por arma de fuego</option>
@@ -59,13 +69,9 @@
                         <fieldset>
                             <legend>Lugar del Delito</legend>
                             <div class="form-group ">
-                                <label for="txtcalle1" class="control-label col-xs-12 col-sm-1">Calle 1</label>
-                                <span class="col-xs-12 col-sm-5">
+                                <label for="txtcalle1" class="control-label col-xs-12 col-sm-1">Calle</label>
+                                <span class="col-xs-12 col-sm-11">
                                     <input class="form-control" id="txtcalle1" name="calle" tabindex="4" type="text">
-                                </span>
-                                <label for="txtcalle2" class="control-label col-xs-12 col-sm-1">Calle 2</label>
-                                <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcalle2" name="calle" tabindex="5" type="text">
                                 </span>
                             </div>
                             <div class="form-group">
@@ -76,32 +82,6 @@
                                 <label for="txtdeleg" class="control-label col-xs-12 col-sm-1">Delegacion</label>
                                 <span class="col-xs-12 col-sm-5">
                                     <input class="form-control" id="txtdeleg" name="deleg" tabindex="7" type="text"> 
-                                </span>
-                            </div>
-                            <div class="form-group">
-                                <span class="col-xs-12 col-sm-12">
-                                    <input class="btn btn-primary pull-right" id="search" name="search" tabindex="8" value="Buscar" onclick="buscar()" type="button">
-                                </span>
-                            </div>
-                            <div class="form-group">
-                                <div id="map_canvas" class="col-xs-12 col-sm-12"></div>
-                            </div>
-                            <div class="form-group">
-                                <label for="txtcoordy" class="control-label col-xs-12 col-sm-1">Latitud</label>
-                                <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcoordy" name="coordy" tabindex="9" type="text" disabled=""> 
-                                </span>
-                                <label for="txtcoordx" class="control-label col-xs-12 col-sm-1">Longitud</label>
-                                <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcoordx" name="coordx" tabindex="10" type="text" disabled=""> 
-                                </span>
-                            </div>
-                        </fieldset>
-                        <fieldset>
-                            <legend>Detalles o Descripci&oacute;n del Delito</legend>
-                            <div class="form-group ">
-                                <span class="col-xs-12 col-sm-12">
-                                    <textarea id="txtdesc" class="form-control" rows="3" name="descripcion" tabindex="11"></textarea>
                                 </span>
                             </div>
                         </fieldset>
@@ -115,26 +95,34 @@
 
     <jsp:attribute name="script_area">
         <script src="js/bootstrap-datepicker.min.js"></script>
-        <script src="js/locale/bootstrap-datepicker.es.min.js"></script>
+        <script src="js/locales/bootstrap-datepicker.es.min.js"></script>
         <script src="js/clockpicker.js"></script>
         <script src="js/maps.js"></script>
         <script type="text/javascript">
-            $('#txtfecha').datepicker({
+            $('.input-daterange').datepicker({
+                todayBtn: "linked",
                 language: 'es',
                 format: 'yyyy-mm-dd',
                 orientation: 'bottom',
-                autoclose: true,
                 todayHighlight: true
             });
         </script>
         <script type="text/javascript">
-            $('#txthora').clockpicker({
+            $('#txthora1').clockpicker({
                 placement: 'bottom',
                 align: 'left',
                 autoclose: 'true',
                 donetext: 'Listo'
             });
         </script>
-        <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFdGqr8PaEFVR01HPYRn0FdRP1xAT08QA&callback=load_map"></script>
+        <script type="text/javascript">
+            $('#txthora2').clockpicker({
+                placement: 'bottom',
+                align: 'left',
+                autoclose: 'true',
+                donetext: 'Listo'
+            });
+        </script>
     </jsp:attribute>
-</t:gral_layout>
+
+</t:user_layout>

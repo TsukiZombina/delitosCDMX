@@ -1,7 +1,9 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <t:gral_layout title="Delitos CDMX">
+
     <jsp:attribute name="head_area">  
     </jsp:attribute>
+
     <jsp:attribute name="body_area">
         <section>
             <div class="content center-block">
@@ -55,4 +57,8 @@
             </div>
         </section> <!-- / #main-content -->
     </jsp:attribute>
+
+    <jsp:attribute name="script_area">  
+    </jsp:attribute>
+
 </t:gral_layout>
