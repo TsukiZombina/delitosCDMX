@@ -70,18 +70,46 @@
                             <legend>Lugar del Delito</legend>
                             <div class="form-group ">
                                 <label for="txtcalle1" class="control-label col-xs-12 col-sm-1">Calle</label>
-                                <span class="col-xs-12 col-sm-11">
+                                <span class="col-xs-12 col-sm-5">
                                     <input class="form-control" id="txtcalle1" name="calle" tabindex="4" type="text">
+                                </span>
+                                <label for="txtcolonia" class="control-label col-xs-12 col-sm-1">Colonia</label>
+                                <span class="col-xs-12 col-sm-5">
+                                    <input class="form-control" id="txtcolonia" name="colonia" tabindex="5" type="text"> 
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="txtcolonia" class="control-label col-xs-12 col-sm-1">Colonia</label>
-                                <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcolonia" name="colonia" tabindex="6" type="text"> 
+                                <label for="txtdeleg" class="control-label col-xs-12 col-sm-1">Delegaci&oacute;n</label>
+                                <span class="col-xs-12 col-sm-11">
+                                    <select class="form-control" id="slcdeleg" name="delegacion" tabindex="6" size="16" multiple>
+                                        <option value="" disabled selected hidden></option>
+                                        <option value="1">Alvaro Obregon</option>
+                                        <option value="2">Azcapotzalco</option>
+                                        <option value="3">Benito Juarez</option>
+                                        <option value="4">Coyoacan</option>
+                                        <option value="5">Cuajimalpa de Morelos</option>
+                                        <option value="6">Cuauhtemoc</option>
+                                        <option value="7">Gustavo A Madero</option>
+                                        <option value="8">Iztacalco</option>
+                                        <option value="9">Iztapalapa</option>
+                                        <option value="10">La Magdalena Contreras</option>
+                                        <option value="11">Miguel Hidalgo</option>
+                                        <option value="12">Milpa Alta</option>
+                                        <option value="13">Tlahuac</option>
+                                        <option value="14">Tlalpan</option>
+                                        <option value="15">Venustiano Carranza</option>
+                                        <option value="16">Xochimilco</option>
+                                    </select>
                                 </span>
-                                <label for="txtdeleg" class="control-label col-xs-12 col-sm-1">Delegacion</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="txtcoordy" class="control-label col-xs-12 col-sm-1">Latitud</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtdeleg" name="deleg" tabindex="7" type="text"> 
+                                    <input class="form-control" id="txtcoordy" name="coordy" tabindex="9" type="text"> 
+                                </span>
+                                <label for="txtcoordx" class="control-label col-xs-12 col-sm-1">Longitud</label>
+                                <span class="col-xs-12 col-sm-5">
+                                    <input class="form-control" id="txtcoordx" name="coordx" tabindex="10" type="text"> 
                                 </span>
                             </div>
                         </fieldset>
@@ -95,9 +123,8 @@
 
     <jsp:attribute name="script_area">
         <script src="js/bootstrap-datepicker.min.js"></script>
-        <script src="js/locales/bootstrap-datepicker.es.min.js"></script>
+        <script src="js/locale/bootstrap-datepicker.es.min.js"></script>
         <script src="js/clockpicker.js"></script>
-        <script src="js/maps.js"></script>
         <script type="text/javascript">
             $('.input-daterange').datepicker({
                 todayBtn: "linked",
