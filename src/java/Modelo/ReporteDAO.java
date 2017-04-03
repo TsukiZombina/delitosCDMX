@@ -195,7 +195,7 @@ public class ReporteDAO {
     }
 
     private String buildQuery(String fecha1, String fecha2, String hora1, String hora2, String[] listaDelito, String calle1, String calle2, String colonia, String[] listaDelegacion, String coord_x, String coord_y) {
-        String sql = "SELECT reporte.id_reporte, reporte.fecha, reporte.hora, reporte.calle1, reporte.calle2, reporte.coord_x, reporte.coord_y, reporte.cuadrante, reporte.id_colonia, reporte.id_delegacion, reporte.id_delito FROM (reporte INNER JOIN colonia ON reporte.id_colonia = colonia.id_colonia) WHERE ";
+        String sql = "SELECT reporte.id_reporte, reporte.fecha, reporte.hora, reporte.calle1, reporte.calle2, reporte.coord_x, reporte.coord_y, reporte.cuadrante, reporte.id_colonia, reporte.id_delegacion, reporte.id_delito, reporte.descripcion FROM (reporte INNER JOIN colonia ON reporte.id_colonia = colonia.id_colonia) WHERE ";
         int flag = 0;
 
         if (!(fecha1.isEmpty() || fecha2.isEmpty())) {
