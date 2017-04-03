@@ -66,6 +66,16 @@ header {
     font-size: 16px;
 }
 
+.navbar-default .navbar-nav > li > form > a {
+    padding: 21px 14px;
+    margin-right: 1px;
+    display: block;
+    text-align: center;
+    font-weight: bolder;
+    color: #333333;
+    font-size: 16px;
+}
+
 .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover{
     color: #333333;
     cursor: default;
@@ -75,6 +85,13 @@ header {
     cursor: pointer;
     color: #EC008A;
     box-shadow: 0px 5px 0px #EC008A;
+}
+
+.navbar-default .navbar-nav > li > form > a:focus, .navbar-default .navbar-nav > li > form > a:hover{
+    cursor: pointer;
+    color: #EC008A;
+    box-shadow: 0px 5px 0px #EC008A;
+    text-decoration: none;
 }
 
 .navbar-default .navbar-toggle .icon-bar{
@@ -182,15 +199,15 @@ header {
 }
 
 .carousel-control.left {
-  background-image: none;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+    background-image: none;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
 }
 
 .carousel-control.right {
-  background-image: none;
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
+    background-image: none;
+    background-repeat: repeat-x;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=1);
 }
 
 .carousel-control, .carousel-control:focus {

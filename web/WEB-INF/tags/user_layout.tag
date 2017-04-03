@@ -54,12 +54,12 @@
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
                             <li><a href="index-user.jsp"><span class="glyphicon glyphicon-home"></span> Inicio</a></li>
-                            <li ><a href="perfil.jsp"><span class="glyphicon glyphicon-user"></span> Perfil</a></li>
+                            <li><form id="formperfil" action="usuarioDatos" method="post"><a href="javascript:{}" onClick="document.getElementById('formperfil').submit(); return false;"><span class="glyphicon glyphicon-user"></span> Perfil</a></form></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a href="denuncia-user.jsp"><span class="glyphicon glyphicon-plus"></span> Reporte</a></li>
                             <li><a href="consulta-user.jsp"><span class="glyphicon glyphicon-search"></span> Consultas</a></li>
-                            <li ><a href="index.jsp"><span class="glyphicon glyphicon-log-out"></span> Salir</a></li>
+                            <li><form id="formlogout" action="logout" method="post"><a href="javascript:{}" onClick="document.getElementById('formlogout').submit(); return false;"><span class="glyphicon glyphicon-log-out"></span> Salir</a></form></li>
                         </ul>
                     </div>
                 </div>

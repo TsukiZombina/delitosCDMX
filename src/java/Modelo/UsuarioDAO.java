@@ -17,28 +17,31 @@ import java.sql.SQLException;
  */
 public class UsuarioDAO {
 
-    public Usuario login(String user, String pass) {
+    Usuario u;
+
+    public boolean login(String user, String pass) {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
-        Usuario usuario = null;
-        
+        boolean st = false;
+
         try {
             conn = UConnection.getConnection();
             String sql = "SELECT * FROM usuario WHERE usuario = '" + user + "' AND password = '" + pass + "';";
 
             ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
-            
-            usuario = new Usuario();
-            rs.next();
-            usuario.setUsuario(rs.getString("usuario"));
-            usuario.setPassword(rs.getString("password"));
-            usuario.setNombre(rs.getString("nombre_usuario"));
-            usuario.setApellidos(rs.getString("apellido_usuario"));
-            usuario.setEmail(rs.getString("email"));
-            
-            
+            st = rs.next();
+
+            if (st) {
+                u = new Usuario();
+                u.setUsuario(rs.getString("usuario"));
+                u.setPassword(rs.getString("password"));
+                u.setNombre(rs.getString("nombre_usuario"));
+                u.setApellidos(rs.getString("apellido_usuario"));
+                u.setEmail(rs.getString("email"));
+            }
+
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {
@@ -49,7 +52,11 @@ public class UsuarioDAO {
                 System.out.println(ex);
             }
         }
-        return usuario;
-        
+        return st;
+
+    }
+
+    public Usuario getUsuario() {
+        return u;
     }
 }

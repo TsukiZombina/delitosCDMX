@@ -1,13 +1,12 @@
 /*
- *  author:    Arturo Camargo
- *  mail:      scarturocamargo@gmail.com
- *  license:   Copyright © SC Soluciones en Computacion 2017
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package Servlets;
 
-import DTO.Usuario;
-import Modelo.UsuarioDAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,15 +14,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+
 /**
  *
- * @author Arturo Camargo
+ * @author RobertoManuel
  */
-@WebServlet("/accesoUsuario")
-public class ServletAccesoUsuario extends HttpServlet {
-    HttpSession sesion = null;
-    static public Usuario currentLog;
-    
+@WebServlet("/logout")
+public class ServletLogout extends HttpServlet {
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -35,7 +32,7 @@ public class ServletAccesoUsuario extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
     }
 
     /**
@@ -50,23 +47,11 @@ public class ServletAccesoUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
-        UsuarioDAO udao = new UsuarioDAO();
-        
-        String user = request.getParameter("user").trim();
-        String pass = request.getParameter("password").trim();
-        
-        if (udao.login(user, pass)) {
-            Usuario u = udao.getUsuario();
-            sesion = request.getSession();
-            sesion.setAttribute("user", u);
-            response.setContentType("text/html;charset=UTF-8");
-            request.getRequestDispatcher("index-user.jsp").forward(request, response);
-            
-        } else {
-            response.setContentType("text/html;charset=UTF-8");
-            System.out.println("Contraseña Incorrecta");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
-        }
+        HttpSession sesion;
+        sesion = request.getSession();
+        sesion.invalidate();
+        response.setContentType("text/html;charset=UTF-8");
+        request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 
     /**
