@@ -113,6 +113,7 @@
             });
         </script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFdGqr8PaEFVR01HPYRn0FdRP1xAT08QA&callback=load_map"></script>
+
     </jsp:attribute>
 
 </t:user_layout>

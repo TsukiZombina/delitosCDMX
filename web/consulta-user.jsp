@@ -87,8 +87,8 @@
                             <div class="form-group">
                                 <label for="txtdeleg" class="control-label col-xs-12 col-sm-1">Delegaci&oacute;n</label>
                                 <span class="col-xs-12 col-sm-11">
-                                    <select class="form-control" id="slcdeleg" name="delegacion" tabindex="7" size="16" multiple>
-                                        <option value="1" disabled selected hidden></option>
+                                    <select class="form-control" id="slcdeleg" name="delegacion" tabindex="7" size="17" multiple>
+                                        <option value="1">No Especificada</option>
                                         <option value="2">Alvaro Obregon</option>
                                         <option value="3">Azcapotzalco</option>
                                         <option value="4">Benito Juarez</option>

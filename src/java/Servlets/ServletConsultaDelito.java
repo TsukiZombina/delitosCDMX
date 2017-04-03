@@ -33,7 +33,7 @@ public class ServletConsultaDelito extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**
@@ -47,7 +47,7 @@ public class ServletConsultaDelito extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         ArrayList<Reporte> listaResultados = null;
         ReporteDAO rdao = new ReporteDAO();
 
@@ -70,14 +70,17 @@ public class ServletConsultaDelito extends HttpServlet {
         String coord_y = request.getParameter("coordy");
 
         if ((fecha1.isEmpty()) && (fecha2.isEmpty()) && (hora1.isEmpty()) && (hora2.isEmpty()) && (listaDelito.length == 0) && (calle1.isEmpty()) && (calle2.isEmpty()) && (colonia.isEmpty()) && (listaDelegacion.length == 0) && (coord_x.isEmpty()) && (coord_y.isEmpty())) {
-            
             listaResultados = rdao.buscarTodo();
-            
+
             response.setContentType("text/html; charset=UTF-8");
             request.setAttribute("listaResultados", listaResultados);
             request.getRequestDispatcher("resultados.jsp").forward(request, response);
         } else {
-            
+            listaResultados = rdao.busquedaSelectiva(fecha1, fecha2, hora1, hora2, listaDelito, calle1, calle2, colonia, listaDelegacion, coord_x, coord_y);
+
+            response.setContentType("text/html; charset=UTF-8");
+            request.setAttribute("listaResultados", listaResultados);
+            request.getRequestDispatcher("resultados.jsp").forward(request, response);
         }
     }
 

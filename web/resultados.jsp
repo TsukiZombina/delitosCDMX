@@ -25,7 +25,7 @@
                            data-id-field="id" 
                            data-pagination="true" 
                            data-locale="es-MX"
-                           data-page-size="5">
+                           data-page-size="10">
                         <thead>
                             <tr>
                                 <th data-field="id" data-switchable="false" data-sortable="true">ID</th>
@@ -58,7 +58,7 @@
                                     <td>${i.getCuadrante()}</td>
                                     <td>${i.getDelito().getNombre_delito()}</td>
                                     <td>${i.getDescripcion()}</td>
-                                    <td><form method="post" action="datosDelito"><input type="hidden" name="idButton" value="${i.getId_reporte()}"><input class="btn btn-primary" value="Ver" type="submit"></form></td>
+                                    <td><form method="post" action="datosDelito"><input type="hidden" name="idButton" value="${i.getId_reporte()}"><input class="btn btn-primary" value="Ver" style="margin: 0;" type="submit"></form></td>
                                 </tr>
                             </c:forEach>
                         </tbody> 
