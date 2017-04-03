@@ -30,3 +30,11 @@ tbody > tr > td{
   background-color: #EC008A !important;
   border-color: #EC008A !important;
 }
+
+.pagination>li>a {
+    color: #666;
+}
+
+.pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover {
+    color: #EC008A;
+}

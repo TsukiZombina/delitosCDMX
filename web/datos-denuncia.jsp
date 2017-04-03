@@ -1,5 +1,5 @@
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
-<t:user_layout title="Delitos CDMX: Denuncia">
+<t:user_layout title="Delitos CDMX: Datos de Denuncia">
 
     <jsp:attribute name="head_area">
         <link href="css/bootstrap-datepicker3.min.css" rel="stylesheet">
@@ -12,60 +12,39 @@
             <div class="content center-block">
                 <div class="content-title"><span class="glyphicon glyphicon-stop icon-title"></span> Denuncia de Delito</div>
                 <div class="main">
-                    <form method="post"  class="form-horizontal" action="altaDelito">
+                    <form method="post"  class="form-horizontal" >
                         <fieldset>
                             <legend>Fecha y Hora del Delito</legend>
                             <div class="form-group ">
                                 <label for="txtfecha" class="control-label col-xs-12 col-sm-1">Fecha</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input id="txtfecha" class="form-control" name="fecha" placeholder="Formato AAAA-MM-DD" required="" tabindex="1" type="text">
+                                    <input id="txtfecha" class="form-control" name="fecha" tabindex="1" type="text">
                                 </span>
                                 <label for="txthora" class="control-label col-xs-12 col-sm-1">Hora</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input id="txthora" class="form-control" name="hora" placeholder="Formato de 24 hrs" required="" tabindex="2" type="text"> 
+                                    <input id="txthora" class="form-control" name="hora" tabindex="2" type="text"> 
                                 </span>
                             </div>
                         </fieldset>
                         <fieldset>
                             <legend>Tipo de Delito</legend>
                             <div class="form-group">
-                                <label for="slcdelito" class="control-label col-xs-12 col-sm-1">Delito</label>
+                                <label for="txtdelito" class="control-label col-xs-12 col-sm-1">Delito</label>
                                 <div class="col-xs-12 col-sm-11">
-                                    <select class="form-control" id="slcdelito" name="Delito" required="" tabindex="3" size="1">
-                                        <option value="" disabled selected hidden></option>
-                                        <option value="1">Homicidio doloso</option>
-                                        <option value="2">Lesiones por arma de fuego</option>
-                                        <option value="3">Robo a bordo de metro c&sol;v</option>
-                                        <option value="4">Robo a bordo de metro s&sol;v</option>
-                                        <option value="5">Robo a bordo de microbus c&sol;v</option>
-                                        <option value="6">Robo a bordo de microbus s&sol;v</option>
-                                        <option value="7">Robo a bordo de taxi c&sol;v</option>
-                                        <option value="8">Robo a casa habitacion c&sol;v</option>
-                                        <option value="9">Robo a cuentahabiente c&sol;v</option>
-                                        <option value="10">Robo a negocio c&sol;v</option>
-                                        <option value="11">Robo a repartidor c&sol;v</option>
-                                        <option value="12">Robo a repartidor s&sol;v</option>
-                                        <option value="13">Robo a transe&uacute;nte c&sol;v</option>
-                                        <option value="14">Robo a transe&uacute;nte s&sol;v</option>
-                                        <option value="15">Robo a transportista c&sol;v</option>
-                                        <option value="16">Robo a transportista s&sol;v</option>
-                                        <option value="17">Robo de veh&iacute;culo c&sol;v</option>
-                                        <option value="18">Robo de veh&iacute;culo s&sol;v</option>
-                                        <option value="19">Violaci&oacute;n</option>
-                                    </select>
+                                    <input class="form-control" id="txtdelito" name="delito" tabindex="3" type="text">
                                 </div>
                             </div>
                         </fieldset>
                         <fieldset>
                             <legend>Lugar del Delito</legend>
-                            <div class="form-group ">
+                            <div class="form-group">
                                 <label for="txtcalle1" class="control-label col-xs-12 col-sm-1">Calle 1</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcalle1" name="calle" tabindex="4" type="text">
+                                    <input class="form-control" id="txtcalle1" name="calle1" tabindex="4" type="text">
                                 </span>
                                 <label for="txtcalle2" class="control-label col-xs-12 col-sm-1">Calle 2</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcalle2" name="calle" tabindex="5" type="text">
+                                    <input class="form-control" id="txtcalle2" name="calle2" tabindex="5" type="text">
                                 </span>
                             </div>
                             <div class="form-group">
@@ -75,7 +54,7 @@
                                 </span>
                                 <label for="txtdeleg" class="control-label col-xs-12 col-sm-1">Delegacion</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtdeleg" name="deleg" tabindex="7" type="text"> 
+                                    <input class="form-control" id="txtdeleg" name="delegacion" tabindex="7" type="text"> 
                                 </span>
                             </div>
                             <div class="form-group">

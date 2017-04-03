@@ -12,7 +12,7 @@
             <div class="content center-block">
                 <div class="content-title"><span class="glyphicon glyphicon-stop icon-title"></span> Consulta de Delitos</div>
                 <div class="main">
-                    <form method="post"  class="form-horizontal" action="consultaDelito">
+                    <form method="POST" class="form-horizontal" action="consultaDelito">
                         <fieldset>
                             <legend>Fecha y Hora de los Delitos</legend>
                             <div class="form-group">

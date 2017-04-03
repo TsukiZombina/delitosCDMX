@@ -10,6 +10,7 @@
         <link href="css/bootstrap-table.css" rel="stylesheet">
         <link href="css/bootstrap-datepicker3.min.css" rel="stylesheet">
         <link href="css/clockpicker.css" rel="stylesheet">
+        <link href="css/custom/formularios.css" rel="stylesheet">
         <link href="css/custom/tablas.css" rel="stylesheet">
     </jsp:attribute>
 
@@ -23,10 +24,11 @@
                            data-show-columns="true"
                            data-id-field="id" 
                            data-pagination="true" 
-                           data-locale="es-MX">
+                           data-locale="es-MX"
+                           data-page-size="5">
                         <thead>
                             <tr>
-                                <th data-field="id_reporte" data-switchable="false" data-sortable="true">ID</th>
+                                <th data-field="id" data-switchable="false" data-sortable="true">ID</th>
                                 <th data-field="fecha" data-switchable="false" data-sortable="true">Fecha</th>
                                 <th data-field="hora" data-switchable="false" data-sortable="true">Hora</th>
                                 <th data-field="calle1" data-switchable="false">Calle 1</th>
@@ -38,23 +40,25 @@
                                 <th data-field="cuadrante" data-visible="false">Cuadrante</th>
                                 <th data-field="delito" data-switchable="false" data-sortable="true">Delito</th>
                                 <th data-field="descripcion" data-visible="false">Descripci&oacute;n</th>
+                                <th data-field="consulta" data-switchable="false">Consulta</th>
                             </tr>
                         </thead>
                         <tbody>
                             <c:forEach items="${listaResultados}" var="i" >
                                 <tr>
-                                    <td><c:out value="${i.getId_reporte()}"/></td>
-                                    <td><c:out value="${i.getFecha()}"/></td>
-                                    <td><c:out value="${i.getHora()}"/></td>
-                                    <td><c:out value="${i.getCalle1()}"/></td>
-                                    <td><c:out value="${i.getCalle2()}"/></td>
-                                    <td><c:out value="${i.getColonia().getnombre_colonia()}"/></td>
-                                    <td><c:out value="${i.getDelegacion().getnombre_delegacion()}"/></td>
-                                    <td><c:out value="${i.getCoord_x()}"/></td>
-                                    <td><c:out value="${i.getCoord_y()}"/></td>
-                                    <td><c:out value="${i.getCuadrante()}"/></td>
-                                    <td><c:out value="${i.getDelito().getNombre_delito()}"/></td>
-                                    <td><c:out value="${i.getDescripcion()}"/></td>
+                                    <td>${i.getId_reporte()}</td>
+                                    <td>${i.getFecha()}</td>
+                                    <td>${i.getHora()}</td>
+                                    <td>${i.getCalle1()}</td>
+                                    <td>${i.getCalle2()}</td>
+                                    <td>${i.getColonia().getnombre_colonia()}</td>
+                                    <td>${i.getDelegacion().getnombre_delegacion()}</td>
+                                    <td>${i.getCoord_x()}</td>
+                                    <td>${i.getCoord_y()}</td>
+                                    <td>${i.getCuadrante()}</td>
+                                    <td>${i.getDelito().getNombre_delito()}</td>
+                                    <td>${i.getDescripcion()}</td>
+                                    <!--<td><form method="post" action="datosDelito"><input type="hidden" name="idButton" value="${i.getId_reporte()}"><input class="btn btn-primary" value="Ver" type="submit"></form></td>-->
                                 </tr>
                             </c:forEach>
                         </tbody> 
@@ -71,11 +75,6 @@
         <script src="js/locale/bootstrap-table-es-MX.min.js"></script>
         <script src="js/locale/bootstrap-datepicker.es.min.js"></script>
         <script src="js/clockpicker.js"></script>
-        <script>
-            $('#table').bootstrapTable({
-                /*data: <c:out value="${listaResultados}" escapeXml="false" />*/
-            })
-        </script>
     </jsp:attribute>
 
 </t:user_layout>
