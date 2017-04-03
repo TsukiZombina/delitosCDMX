@@ -5,8 +5,12 @@
  */
 package Servlets;
 
+import DTO.Reporte;
+import Modelo.ColoniaDAO;
+import Modelo.DelegacionDAO;
+import Modelo.DelitoDAO;
+import Modelo.ReporteDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +24,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/registroReporte")
 public class ServletRegistroReporte extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -46,7 +49,31 @@ public class ServletRegistroReporte extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        ReporteDAO rdao = new ReporteDAO();
+        Reporte r = new Reporte();
         
+        r.setFecha(request.getParameter("fecha").trim());
+        r.setHora(request.getParameter("hora").trim());
+        r.setCalle1(request.getParameter("calle1").trim());
+        r.setCalle2(request.getParameter("calle2").trim());
+        r.setCoord_x(request.getParameter("coordx"));
+        r.setCoord_y(request.getParameter("coordy"));
+        r.setDescripcion(request.getParameter("descripcion"));
+        r.setDelito(DelitoDAO.get().buscarPorId(Integer.parseInt(request.getParameter("delito"))));
+        r.setColonia(ColoniaDAO.get().buscarPorNombre(request.getParameter("colonia")));
+        r.setDelegacion(DelegacionDAO.get().buscarPorId(Integer.parseInt(request.getParameter("delegacion"))));
+        
+        if(rdao.nuevoReporte(r)){
+            //Mensaje de ëxito
+            System.out.println("Si se agregó");
+            //Ventana PoP que avise éxito
+            request.getRequestDispatcher("denuncia-user.jsp").forward(request, response);
+        }
+        else{
+            System.out.println("No se agregó ");
+            //Ventana PoP que avise falla
+            request.getRequestDispatcher("denuncia-user.jsp").forward(request, response);
+        }
     }
 
     /**

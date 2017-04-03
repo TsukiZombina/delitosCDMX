@@ -48,7 +48,12 @@ function build_address() {
     var calle2 = document.getElementById("txtcalle2").value;
     var colonia = document.getElementById("txtcolonia").value;
     var sel = document.getElementById("slcdeleg");
-    var delegacion = sel.options[sel.selectedIndex].text;
+    if(sel){
+        var delegacion = sel.options[sel.selectedIndex].text;
+    }
+    else{
+        var delegacion = document.getElementById("txtdeleg").value;
+    }
 
     if ((calle1) && (calle2) && (colonia) && (delegacion)) {
         address = calle1 + " y " + calle2 + ", " + colonia + ", " + delegacion;

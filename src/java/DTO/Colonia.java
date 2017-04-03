@@ -13,6 +13,10 @@ public class Colonia {
         this.nombre_colonia = nombre_colonia;
     }
 
+    public Colonia(String nombreColonia) {
+        this.nombre_colonia = nombreColonia;
+    }
+
     public int getid_colonia() {
         return id_colonia;
     }

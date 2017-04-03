@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <label for="slcdelito" class="control-label col-xs-12 col-sm-1">Delito</label>
                                 <div class="col-xs-12 col-sm-11">
-                                    <select class="form-control" id="slcdelito" name="Delito" required="" tabindex="3" size="1">
+                                    <select class="form-control" id="slcdelito" name="delito" required="" tabindex="3" size="1">
                                         <option value="" disabled selected hidden></option>
                                         <option value="1">Homicidio doloso</option>
                                         <option value="2">Lesiones por arma de fuego</option>
@@ -61,11 +61,11 @@
                             <div class="form-group ">
                                 <label for="txtcalle1" class="control-label col-xs-12 col-sm-1">Calle 1</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcalle1" name="calle" required="" tabindex="4" type="text">
+                                    <input class="form-control" id="txtcalle1" name="calle1" required="" tabindex="4" type="text">
                                 </span>
                                 <label for="txtcalle2" class="control-label col-xs-12 col-sm-1">Calle 2</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcalle2" name="calle" tabindex="5" type="text">
+                                    <input class="form-control" id="txtcalle2" name="calle2" tabindex="5" type="text">
                                 </span>
                             </div>
                             <div class="form-group">
@@ -107,11 +107,11 @@
                             <div class="form-group">
                                 <label for="txtcoordy" class="control-label col-xs-12 col-sm-1">Latitud</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcoordy" name="coordy" tabindex="9" type="text" disabled=""> 
+                                    <input class="form-control" id="txtcoordy" name="coordy" tabindex="9" type="text" readonly> 
                                 </span>
                                 <label for="txtcoordx" class="control-label col-xs-12 col-sm-1">Longitud</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcoordx" name="coordx" tabindex="10" type="text" disabled=""> 
+                                    <input class="form-control" id="txtcoordx" name="coordx" tabindex="10" type="text" readonly> 
                                 </span>
                             </div>
                         </fieldset>

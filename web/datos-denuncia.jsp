@@ -2,8 +2,6 @@
 <t:user_layout title="Delitos CDMX: Datos de Denuncia">
 
     <jsp:attribute name="head_area">
-        <link href="css/bootstrap-datepicker3.min.css" rel="stylesheet">
-        <link href="css/clockpicker.css" rel="stylesheet">
         <link href="css/custom/formularios.css" rel="stylesheet">
     </jsp:attribute>
 
@@ -18,11 +16,11 @@
                             <div class="form-group ">
                                 <label for="txtfecha" class="control-label col-xs-12 col-sm-1">Fecha</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input id="txtfecha" class="form-control" name="fecha" tabindex="1" type="text" value="${reporte.getFecha()}">
+                                    <input id="txtfecha" class="form-control" name="fecha" tabindex="1" type="text" value="${reporte.getFecha()}" readonly="">
                                 </span>
                                 <label for="txthora" class="control-label col-xs-12 col-sm-1">Hora</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input id="txthora" class="form-control" name="hora" tabindex="2" type="text" value="${reporte.getHora()}"> 
+                                    <input id="txthora" class="form-control" name="hora" tabindex="2" type="text" value="${reporte.getHora()}" readonly> 
                                 </span>
                             </div>
                         </fieldset>
@@ -31,7 +29,7 @@
                             <div class="form-group">
                                 <label for="txtdelito" class="control-label col-xs-12 col-sm-1">Delito</label>
                                 <div class="col-xs-12 col-sm-11">
-                                    <input class="form-control" id="txtdelito" name="delito" tabindex="3" type="text" value="${reporte.getDelito().getNombre_delito()}">
+                                    <input class="form-control" id="txtdelito" name="delito" tabindex="3" type="text" value="${reporte.getDelito().getNombre_delito()}" readonly>
                                 </div>
                             </div>
                         </fieldset>
@@ -68,11 +66,11 @@
                             <div class="form-group">
                                 <label for="txtcoordy" class="control-label col-xs-12 col-sm-1">Latitud</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcoordy" name="coordy" tabindex="9" type="text" disabled=""> 
+                                    <input class="form-control" id="txtcoordy" name="coordy" tabindex="9" value="${reporte.getCoord_y()}" type="text" readonly> 
                                 </span>
                                 <label for="txtcoordx" class="control-label col-xs-12 col-sm-1">Longitud</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcoordx" name="coordx" tabindex="10" type="text" disabled=""> 
+                                    <input class="form-control" id="txtcoordx" name="coordx" tabindex="10" value="${reporte.getCoord_x()}" type="text" readonly> 
                                 </span>
                             </div>
                         </fieldset>
@@ -80,7 +78,7 @@
                             <legend>Detalles o Descripci&oacute;n del Delito</legend>
                             <div class="form-group ">
                                 <span class="col-xs-12 col-sm-12">
-                                    <textarea id="txtdesc" class="form-control" rows="3" name="descripcion" tabindex="11"></textarea>
+                                    <textarea id="txtdesc" class="form-control" rows=3 name="descripcion" tabindex="11" readonly>${reporte.getDescripcion()}</textarea>
                                 </span>
                             </div>
                         </fieldset>
@@ -95,25 +93,7 @@
         <script src="js/locale/bootstrap-datepicker.es.min.js"></script>
         <script src="js/clockpicker.js"></script>
         <script src="js/maps.js"></script>
-        <script type="text/javascript">
-            $('#txtfecha').datepicker({
-                language: 'es',
-                format: 'yyyy-mm-dd',
-                orientation: 'bottom',
-                autoclose: true,
-                todayHighlight: true
-            });
-        </script>
-        <script type="text/javascript">
-            $('#txthora').clockpicker({
-                placement: 'bottom',
-                align: 'left',
-                autoclose: 'true',
-                donetext: 'Listo'
-            });
-        </script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBFdGqr8PaEFVR01HPYRn0FdRP1xAT08QA&callback=load_map"></script>
-
     </jsp:attribute>
 
 </t:user_layout>

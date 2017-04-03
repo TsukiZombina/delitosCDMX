@@ -48,6 +48,7 @@ public class ReporteDAO {
                 r.setColonia(ColoniaDAO.get().buscarPorId(rs.getInt("id_colonia")));
                 r.setDelegacion(DelegacionDAO.get().buscarPorId(rs.getInt("id_delegacion")));
                 r.setDelito(DelitoDAO.get().buscarPorId(rs.getInt("id_delito")));
+                r.setDescripcion(rs.getString("descripcion"));
                 listaReportes.add(r);
             }
         } catch (SQLException ex) {
@@ -88,6 +89,7 @@ public class ReporteDAO {
             r.setColonia(ColoniaDAO.get().buscarPorId(rs.getInt("id_colonia")));
             r.setDelegacion(DelegacionDAO.get().buscarPorId(rs.getInt("id_delegacion")));
             r.setDelito(DelitoDAO.get().buscarPorId(rs.getInt("id_delito")));
+            r.setDescripcion(rs.getString("descripcion"));
 
         } catch (SQLException ex) {
             System.out.println(ex);
@@ -131,6 +133,7 @@ public class ReporteDAO {
                 r.setColonia(ColoniaDAO.get().buscarPorId(rs.getInt("id_colonia")));
                 r.setDelegacion(DelegacionDAO.get().buscarPorId(rs.getInt("id_delegacion")));
                 r.setDelito(DelitoDAO.get().buscarPorId(rs.getInt("id_delito")));
+                r.setDescripcion(rs.getString("descripcion"));
                 listaReportes.add(r);
             }
         } catch (SQLException ex) {
@@ -144,6 +147,51 @@ public class ReporteDAO {
             }
         }
         return listaReportes;
+    }
+    
+    public boolean nuevoReporte(Reporte r) {
+        boolean msn = false;
+        Connection conn = null;
+        PreparedStatement ps = null;
+
+        try {
+            conn = UConnection.getConnection();
+            String sql = "INSERT INTO reporte (fecha, hora, calle1, calle2, coord_x, coord_y, cuadrante, id_colonia, id_delegacion, id_delito, descripcion) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, r.getFecha());
+            ps.setString(2, r.getHora());
+            ps.setString(3, r.getCalle1());
+            ps.setString(4, r.getCalle2());
+            ps.setString(5, r.getCoord_x());
+            ps.setString(6, r.getCoord_y());
+            ps.setString(7, "");
+            ps.setInt(8, r.getColonia().getid_colonia());
+            ps.setInt(9, r.getDelegacion().getid_delegacion());
+            ps.setInt(10, r.getDelito().getId_delito());
+            ps.setString(11, r.getDescripcion());
+
+            int rtdo = ps.executeUpdate();
+
+            if (rtdo != 1) {
+                msn = false;
+                throw new RuntimeException("Error en insert");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        } finally {
+            try {
+                if (ps != null) {
+                    msn = true;
+                    ps.close();
+                };
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            }
+        }
+        return msn;
     }
 
     private String buildQuery(String fecha1, String fecha2, String hora1, String hora2, String[] listaDelito, String calle1, String calle2, String colonia, String[] listaDelegacion, String coord_x, String coord_y) {
