@@ -85,7 +85,7 @@
                                 </span>
                             </div>
                             <div class="form-group">
-                                <label for="txtdeleg" class="control-label col-xs-12 col-sm-1">Delegaci&oacute;n</label>
+                                <label for="slcdeleg" class="control-label col-xs-12 col-sm-1">Delegaci&oacute;n</label>
                                 <span class="col-xs-12 col-sm-11">
                                     <select class="form-control" id="slcdeleg" name="delegacion" tabindex="7" size="17" multiple>
                                         <option value="1">No Especificada</option>

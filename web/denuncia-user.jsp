@@ -12,7 +12,7 @@
             <div class="content center-block">
                 <div class="content-title"><span class="glyphicon glyphicon-stop icon-title"></span> Denuncia de Delito</div>
                 <div class="main">
-                    <form method="post"  class="form-horizontal" action="altaDelito">
+                    <form method="post"  class="form-horizontal" action="registroReporte">
                         <fieldset>
                             <legend>Fecha y Hora del Delito</legend>
                             <div class="form-group ">
@@ -61,7 +61,7 @@
                             <div class="form-group ">
                                 <label for="txtcalle1" class="control-label col-xs-12 col-sm-1">Calle 1</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcalle1" name="calle" tabindex="4" type="text">
+                                    <input class="form-control" id="txtcalle1" name="calle" required="" tabindex="4" type="text">
                                 </span>
                                 <label for="txtcalle2" class="control-label col-xs-12 col-sm-1">Calle 2</label>
                                 <span class="col-xs-12 col-sm-5">
@@ -71,11 +71,29 @@
                             <div class="form-group">
                                 <label for="txtcolonia" class="control-label col-xs-12 col-sm-1">Colonia</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcolonia" name="colonia" tabindex="6" type="text"> 
+                                    <input class="form-control" id="txtcolonia" name="colonia" required="" tabindex="6" type="text"> 
                                 </span>
-                                <label for="txtdeleg" class="control-label col-xs-12 col-sm-1">Delegacion</label>
+                                <label for="slcdeleg" class="control-label col-xs-12 col-sm-1">Delegacion</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtdeleg" name="deleg" tabindex="7" type="text"> 
+                                    <select class="form-control" id="slcdeleg" name="delegacion" required="" tabindex="7" size="1">
+                                        <option value="1" selected disabled hidden></option>
+                                        <option value="2">Alvaro Obregon</option>
+                                        <option value="3">Azcapotzalco</option>
+                                        <option value="4">Benito Juarez</option>
+                                        <option value="5">Coyoacan</option>
+                                        <option value="6">Cuajimalpa de Morelos</option>
+                                        <option value="7">Cuauhtemoc</option>
+                                        <option value="8">Gustavo A Madero</option>
+                                        <option value="9">Iztacalco</option>
+                                        <option value="10">Iztapalapa</option>
+                                        <option value="11">La Magdalena Contreras</option>
+                                        <option value="12">Miguel Hidalgo</option>
+                                        <option value="13">Milpa Alta</option>
+                                        <option value="14">Tlahuac</option>
+                                        <option value="15">Tlalpan</option>
+                                        <option value="16">Venustiano Carranza</option>
+                                        <option value="17">Xochimilco</option>
+                                    </select> 
                                 </span>
                             </div>
                             <div class="form-group">
