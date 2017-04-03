@@ -50,7 +50,6 @@ public class ReporteDAO {
                 r.setDelito(DelitoDAO.get().buscarPorId(rs.getInt("id_delito")));
                 listaReportes.add(r);
             }
-            System.out.printf(sql);
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {

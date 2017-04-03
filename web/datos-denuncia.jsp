@@ -12,17 +12,17 @@
             <div class="content center-block">
                 <div class="content-title"><span class="glyphicon glyphicon-stop icon-title"></span> Denuncia de Delito</div>
                 <div class="main">
-                    <form method="post"  class="form-horizontal" >
+                    <form class="form-horizontal">
                         <fieldset>
                             <legend>Fecha y Hora del Delito</legend>
                             <div class="form-group ">
                                 <label for="txtfecha" class="control-label col-xs-12 col-sm-1">Fecha</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input id="txtfecha" class="form-control" name="fecha" tabindex="1" type="text">
+                                    <input id="txtfecha" class="form-control" name="fecha" tabindex="1" type="text" value="${reporte.getFecha()}">
                                 </span>
                                 <label for="txthora" class="control-label col-xs-12 col-sm-1">Hora</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input id="txthora" class="form-control" name="hora" tabindex="2" type="text"> 
+                                    <input id="txthora" class="form-control" name="hora" tabindex="2" type="text" value="${reporte.getHora()}"> 
                                 </span>
                             </div>
                         </fieldset>
@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <label for="txtdelito" class="control-label col-xs-12 col-sm-1">Delito</label>
                                 <div class="col-xs-12 col-sm-11">
-                                    <input class="form-control" id="txtdelito" name="delito" tabindex="3" type="text">
+                                    <input class="form-control" id="txtdelito" name="delito" tabindex="3" type="text" value="${reporte.getDelito().getNombre_delito()}">
                                 </div>
                             </div>
                         </fieldset>
@@ -40,26 +40,26 @@
                             <div class="form-group">
                                 <label for="txtcalle1" class="control-label col-xs-12 col-sm-1">Calle 1</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcalle1" name="calle1" tabindex="4" type="text">
+                                    <input class="form-control" id="txtcalle1" name="calle1" tabindex="4" type="text" value="${reporte.getCalle1()}">
                                 </span>
                                 <label for="txtcalle2" class="control-label col-xs-12 col-sm-1">Calle 2</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcalle2" name="calle2" tabindex="5" type="text">
+                                    <input class="form-control" id="txtcalle2" name="calle2" tabindex="5" type="text" value="${reporte.getCalle2()}">
                                 </span>
                             </div>
                             <div class="form-group">
                                 <label for="txtcolonia" class="control-label col-xs-12 col-sm-1">Colonia</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtcolonia" name="colonia" tabindex="6" type="text"> 
+                                    <input class="form-control" id="txtcolonia" name="colonia" tabindex="6" type="text" value="${reporte.getColonia().getnombre_colonia()}"> 
                                 </span>
                                 <label for="txtdeleg" class="control-label col-xs-12 col-sm-1">Delegacion</label>
                                 <span class="col-xs-12 col-sm-5">
-                                    <input class="form-control" id="txtdeleg" name="delegacion" tabindex="7" type="text"> 
+                                    <input class="form-control" id="txtdeleg" name="delegacion" tabindex="7" type="text" value="${reporte.getDelegacion().getnombre_delegacion()}"> 
                                 </span>
                             </div>
                             <div class="form-group">
                                 <span class="col-xs-12 col-sm-12">
-                                    <input class="btn btn-primary pull-right" id="search" name="search" tabindex="8" value="Buscar" onclick="buscar()" type="button">
+                                    <input class="btn btn-primary pull-right" id="search" name="search" tabindex="8" value="Mostrar" onclick="buscar()" type="button">
                                 </span>
                             </div>
                             <div class="form-group">
@@ -84,8 +84,6 @@
                                 </span>
                             </div>
                         </fieldset>
-                        <input class="btn btn-primary col-sm-offset-9" name="clean" tabindex="11" value="Limpiar" type="reset">
-                        <input class="btn btn-primary pull-right" name="submit" tabindex="12" value="Registrar" type="submit">
                     </form>
                 </div> <!-- /article -->
             </div>
