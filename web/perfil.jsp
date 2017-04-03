@@ -29,7 +29,7 @@
                             <div class="form-group">
                                 <label for="txtusuario" class="control-label col-xs-12 col-sm-3">Usuario</label>
                                 <div class="col-xs-12 col-sm-9">
-                                    <input class="form-control" id="txtmatricula" name="matricula" required="" tabindex="4" type="text" value="${usuario.getUsuario()}" readonly>
+                                    <input class="form-control" id="txtusuario" name="user" required="" tabindex="4" type="text" value="${usuario.getUsuario()}" readonly>
                                 </div>
                             </div>
                             <div class="form-group">

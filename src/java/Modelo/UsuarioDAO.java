@@ -55,6 +55,45 @@ public class UsuarioDAO {
         return st;
 
     }
+    
+    public boolean nuevoUsuario(Usuario u) {
+        boolean msn = false;
+        Connection conn = null;
+        PreparedStatement ps = null;
+
+        try {
+            conn = UConnection.getConnection();
+            String sql = "INSERT INTO usuario (usuario, password, nombre_usuario, apellido_usuario, email) VALUES (?,?,?,?,?)";
+
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, u.getUsuario());
+            ps.setString(2, u.getPassword());
+            ps.setString(3, u.getNombre());
+            ps.setString(4, u.getApellidos());
+            ps.setString(5, u.getEmail());
+
+            int rtdo = ps.executeUpdate();
+
+            if (rtdo != 1) {
+                msn = false;
+                throw new RuntimeException("Error en insert");
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            throw new RuntimeException(ex);
+        } finally {
+            try {
+                if (ps != null) {
+                    msn = true;
+                    ps.close();
+                };
+            } catch (Exception ex) {
+                ex.printStackTrace();
+                throw new RuntimeException(ex);
+            }
+        }
+        return msn;
+    }
 
     public Usuario getUsuario() {
         return u;

@@ -16,6 +16,16 @@ public class Usuario {
     private String apellidos;
     private String email;
 
+    public Usuario() {}
+
+    public Usuario(String usuario, String password, String nombre, String apellidos, String email) {
+        this.usuario = usuario;
+        this.password = password;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+    }
+
     public String getUsuario() {
         return usuario;
     }
