@@ -33,8 +33,8 @@ public class ReporteDAO {
             
             conn1 = UConnection.getConnection1();
             //La base maneja la union de los fragmentos verticales.
-            sql = "SELECT delitoscdmx_norte_general.reporte.id_reporte, delitoscdmx_norte_general.reporte.fecha, delitoscdmx_norte_especifico.reporte.hora, delitoscdmx_norte_especifico.reporte.calle1, delitoscdmx_norte_especifico.reporte.calle2, delitoscdmx_norte_especifico.reporte.coord_x, delitoscdmx_norte_especifico.reporte.coord_y, delitoscdmx_norte_especifico.reporte.cuadrante, delitoscdmx_norte_general.reporte.id_colonia, delitoscdmx_norte_general.reporte.id_delegacion, delitoscdmx_norte_general.reporte.id_delito, delitoscdmx_norte_especifico.reporte.descripcion "
-                    + "FROM (delitoscdmx_norte_general.reporte INNER JOIN delitoscdmx_norte_especifico.reporte ON delitoscdmx_norte_general.reporte.id_reporte = delitoscdmx_norte_especifico.reporte.id_reporte) LIMIT 50";
+            sql = "SELECT delitosCDMX_Norte_General.reporte.id_reporte, delitosCDMX_Norte_General.reporte.fecha, delitosCDMX_Norte_Especifico.reporte.hora, delitosCDMX_Norte_Especifico.reporte.calle1, delitosCDMX_Norte_Especifico.reporte.calle2, delitosCDMX_Norte_Especifico.reporte.coord_x, delitosCDMX_Norte_Especifico.reporte.coord_y, delitosCDMX_Norte_Especifico.reporte.cuadrante, delitosCDMX_Norte_General.reporte.id_colonia, delitosCDMX_Norte_General.reporte.id_delegacion, delitosCDMX_Norte_General.reporte.id_delito, delitosCDMX_Norte_Especifico.reporte.descripcion "
+                    + "FROM (delitosCDMX_Norte_General.reporte INNER JOIN delitosCDMX_Norte_Especifico.reporte ON delitosCDMX_Norte_General.reporte.id_reporte = delitosCDMX_Norte_Especifico.reporte.id_reporte) LIMIT 50";
             ps = conn1.prepareStatement(sql);
             rs = ps.executeQuery();
 
@@ -59,8 +59,8 @@ public class ReporteDAO {
 
             conn2 = UConnection.getConnection2();
             //La base maneja la union de los fragmentos verticales.
-            sql = "SELECT delitoscdmx_sur_general.reporte.id_reporte, delitoscdmx_sur_general.reporte.fecha, delitoscdmx_sur_especifico.reporte.hora, delitoscdmx_sur_especifico.reporte.calle1, delitoscdmx_sur_especifico.reporte.calle2, delitoscdmx_sur_especifico.reporte.coord_x, delitoscdmx_sur_especifico.reporte.coord_y, delitoscdmx_sur_especifico.reporte.cuadrante, delitoscdmx_sur_general.reporte.id_colonia, delitoscdmx_sur_general.reporte.id_delegacion, delitoscdmx_sur_general.reporte.id_delito, delitoscdmx_sur_especifico.reporte.descripcion "
-                    + "FROM (delitoscdmx_sur_general.reporte INNER JOIN delitoscdmx_sur_especifico.reporte ON delitoscdmx_sur_general.reporte.id_reporte = delitoscdmx_sur_especifico.reporte.id_reporte) LIMIT 50";
+            sql = "SELECT delitosCDMX_Sur_General.reporte.id_reporte, delitosCDMX_Sur_General.reporte.fecha, delitosCDMX_Sur_Especifico.reporte.hora, delitosCDMX_Sur_Especifico.reporte.calle1, delitosCDMX_Sur_Especifico.reporte.calle2, delitosCDMX_Sur_Especifico.reporte.coord_x, delitosCDMX_Sur_Especifico.reporte.coord_y, delitosCDMX_Sur_Especifico.reporte.cuadrante, delitosCDMX_Sur_General.reporte.id_colonia, delitosCDMX_Sur_General.reporte.id_delegacion, delitosCDMX_Sur_General.reporte.id_delito, delitosCDMX_Sur_Especifico.reporte.descripcion "
+                    + "FROM (delitosCDMX_Sur_General.reporte INNER JOIN delitosCDMX_Sur_Especifico.reporte ON delitosCDMX_Sur_General.reporte.id_reporte = delitosCDMX_Sur_Especifico.reporte.id_reporte) LIMIT 50";
             ps = conn2.prepareStatement(sql);
             rs = ps.executeQuery();
             

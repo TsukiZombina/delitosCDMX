@@ -57,7 +57,7 @@ public class UConnection implements Serializable {
                 String usr = "MrLennon";
                 String pwd = "123456";
                 String bd = "delitosCDMX_Norte_General";
-                String url = "jdbc:mysql://35.184.96.43:3306/delitos-cdmx-norte-general";
+                String url = "jdbc:mysql://35.184.96.43:3306/" + bd;
 
                 Class.forName(driver);
                 System.out.println("Conectando a la base de datos...");
@@ -76,7 +76,7 @@ public class UConnection implements Serializable {
                 String driver = "com.mysql.jdbc.Driver";
                 String usr = "bddistribuidas";
                 String pwd = "crimenescdmx17-i";
-                String bd = "delitoscdmx_sur_general";
+                String bd = "delitosCDMX_Sur_General";
                 String url = "jdbc:mysql://rds-mysql-crimenescdmx.cmfcq4jc7hw8.us-west-2.rds.amazonaws.com:3306/";
 
                 Class.forName(driver);
