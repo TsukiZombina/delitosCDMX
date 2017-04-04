@@ -28,19 +28,34 @@ public class DelegacionDAO implements Serializable {
     }
     
     private void buscarTodos(){
-        Connection conn = null;
+        Connection conn1 = null;
+        Connection conn2 = null;
         PreparedStatement pstm = null;
         ResultSet rs = null;
+        String sql = "";
         
         try {
-            conn = UConnection.getConnection1();
-            String sql = "SELECT * FROM delegacion;";
+            conn1 = UConnection.getConnection1();
+            sql = "SELECT delitosCDMX_Norte_General.delegacion.id_delegacion, delitosCDMX_Norte_General.delegacion.nombre_delegacion FROM delitosCDMX_Norte_General.delegacion";
             
-            pstm = conn.prepareStatement(sql);
+            pstm = conn1.prepareStatement(sql);
             rs = pstm.executeQuery();
 
             listaDelegaciones = new ArrayList<>();
             Delegacion d;
+
+            while (rs.next()) {
+                d = new Delegacion();
+                d.setid_delegacion(rs.getInt("id_delegacion"));
+                d.setnombre_delegacion(rs.getString("nombre_delegacion"));
+                listaDelegaciones.add(d);
+            }
+            
+            conn2 = UConnection.getConnection2();
+            sql = "SELECT delitosCDMX_Sur_General.delegacion.id_delegacion, delitosCDMX_Sur_General.delegacion.nombre_delegacion FROM delitosCDMX_Sur_General.delegacion";
+            
+            pstm = conn2.prepareStatement(sql);
+            rs = pstm.executeQuery();
 
             while (rs.next()) {
                 d = new Delegacion();
