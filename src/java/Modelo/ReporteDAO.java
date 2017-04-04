@@ -191,7 +191,7 @@ public class ReporteDAO {
                     listaReportes.add(r);
                 }
             }
-            
+
             if (listaDelegacion.contains("1") || listaDelegacion.contains("2") || listaDelegacion.contains("5") || listaDelegacion.contains("6") || listaDelegacion.contains("11") || listaDelegacion.contains("13") || listaDelegacion.contains("14") || listaDelegacion.contains("15") || listaDelegacion.contains("17")) {
                 conn2 = UConnection.getConnection2();
                 String sql = buildQuery("delitosCDMX_Sur_General", "delitosCDMX_Sur_Especifico", fecha1, fecha2, hora1, hora2, delitos, calle1, calle2, colonia, delegaciones, coord_x, coord_y);
@@ -238,41 +238,76 @@ public class ReporteDAO {
         boolean msn = false;
         Connection conn = null;
         PreparedStatement ps = null;
+        String sql1 = "";
+        String sql2 = "";
+
+        String id_delegacion = String.valueOf(r.getDelegacion().getid_delegacion());
 
         try {
-            conn = UConnection.getConnection1();
-            String sql = "INSERT INTO reporte (fecha, hora, calle1, calle2, coord_x, coord_y, cuadrante, id_colonia, id_delegacion, id_delito, descripcion) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+            if (id_delegacion.equals("3") || id_delegacion.equals("4") || id_delegacion.equals("7") || id_delegacion.equals("8") || id_delegacion.equals("9") || id_delegacion.equals("10") || id_delegacion.equals("12") || id_delegacion.equals("16")) {
+                conn = UConnection.getConnection1();
+                conn.setAutoCommit(false);
+                sql1 = "INSERT INTO delitosCDMX_Norte_General.reporte (delitosCDMX_Norte_General.reporte.fecha, delitosCDMX_Norte_General.reporte.id_colonia, delitosCDMX_Norte_General.reporte.id_delegacion, delitosCDMX_Norte_General.reporte.id_delito) VALUES (?,?,?,?)";
+                ps = conn.prepareStatement(sql1);
+                ps.setString(1, r.getFecha());
+                ps.setInt(2, r.getColonia().getid_colonia());
+                ps.setInt(3, r.getDelegacion().getid_delegacion());
+                ps.setInt(4, r.getDelito().getId_delito());
+                ps.executeUpdate();
 
-            ps = conn.prepareStatement(sql);
-            ps.setString(1, r.getFecha());
-            ps.setString(2, r.getHora());
-            ps.setString(3, r.getCalle1());
-            ps.setString(4, r.getCalle2());
-            ps.setString(5, r.getCoord_x());
-            ps.setString(6, r.getCoord_y());
-            ps.setString(7, "");
-            ps.setInt(8, r.getColonia().getid_colonia());
-            ps.setInt(9, r.getDelegacion().getid_delegacion());
-            ps.setInt(10, r.getDelito().getId_delito());
-            ps.setString(11, r.getDescripcion());
+                sql2 = "INSERT INTO delitosCDMX_Norte_Especifico.reporte (delitosCDMX_Norte_Especifico.reporte.hora, delitosCDMX_Norte_Especifico.reporte.calle1, delitosCDMX_Norte_Especifico.reporte.calle2, delitosCDMX_Norte_Especifico.reporte.coord_x, delitosCDMX_Norte_Especifico.reporte.coord_y, delitosCDMX_Norte_Especifico.reporte.cuadrante, delitosCDMX_Norte_Especifico.reporte.descripcion) VALUES (?,?,?,?,?,?,?)";
+                ps = conn.prepareStatement(sql2);
+                ps.setString(1, r.getHora());
+                ps.setString(2, r.getCalle1());
+                ps.setString(3, r.getCalle2());
+                ps.setString(4, r.getCoord_x());
+                ps.setString(5, r.getCoord_y());
+                ps.setString(6, "");
+                ps.setString(7, r.getDescripcion());
+                ps.executeUpdate();
 
-            int rtdo = ps.executeUpdate();
+                conn.commit();
+                conn.setAutoCommit(true);
+            } else {
+                conn = UConnection.getConnection2();
+                conn.setAutoCommit(false);
+                sql1 = "INSERT INTO delitosCDMX_Sur_General.reporte (delitosCDMX_Sur_General.reporte.fecha, delitosCDMX_Sur_General.reporte.id_colonia, delitosCDMX_Sur_General.reporte.id_delegacion, delitosCDMX_Sur_General.reporte.id_delito) VALUES (?,?,?,?)";
+                ps = conn.prepareStatement(sql1);
+                ps.setString(1, r.getFecha());
+                ps.setInt(2, r.getColonia().getid_colonia());
+                ps.setInt(3, r.getDelegacion().getid_delegacion());
+                ps.setInt(4, r.getDelito().getId_delito());
+                ps.executeUpdate();
 
-            if (rtdo != 1) {
-                msn = false;
-                throw new RuntimeException("Error en insert");
+                sql2 = "INSERT INTO delitosCDMX_Sur_Especifico.reporte (delitosCDMX_Sur_Especifico.reporte.hora, delitosCDMX_Sur_Especifico.reporte.calle1, delitosCDMX_Sur_Especifico.reporte.calle2, delitosCDMX_Sur_Especifico.reporte.coord_x, delitosCDMX_Sur_Especifico.reporte.coord_y, delitosCDMX_Sur_Especifico.reporte.cuadrante, delitosCDMX_Sur_Especifico.reporte.descripcion) VALUES (?,?,?,?,?,?,?)";
+                ps = conn.prepareStatement(sql2);
+                ps.setString(1, r.getHora());
+                ps.setString(2, r.getCalle1());
+                ps.setString(3, r.getCalle2());
+                ps.setString(4, r.getCoord_x());
+                ps.setString(5, r.getCoord_y());
+                ps.setString(6, "");
+                ps.setString(7, r.getDescripcion());
+                ps.executeUpdate();
+
+                conn.commit();
+                conn.setAutoCommit(true);
             }
         } catch (Exception ex) {
-            ex.printStackTrace();
+            msn = false;
+            try {
+                conn.rollback();
+            } catch (SQLException ex1) {
+                throw new RuntimeException(ex1);
+            }
             throw new RuntimeException(ex);
         } finally {
             try {
                 if (ps != null) {
                     msn = true;
                     ps.close();
-                };
+                }
             } catch (Exception ex) {
-                ex.printStackTrace();
                 throw new RuntimeException(ex);
             }
         }
