@@ -20,16 +20,19 @@ public class UsuarioDAO {
     Usuario u;
 
     public boolean login(String user, String pass) {
-        Connection conn = null;
+        Connection conn1 = null;
+        Connection conn2 = null;
+
         PreparedStatement ps = null;
         ResultSet rs = null;
         boolean st = false;
+        String sql;
 
         try {
-            conn = UConnection.getConnection1();
-            String sql = "SELECT * FROM usuario WHERE usuario = '" + user + "' AND password = '" + pass + "';";
+            conn1 = UConnection.getConnection1();
+            sql = "SELECT usuario, password, nombre_usuario, apellido_usuario, email FROM usuario WHERE usuario = '" + user + "' AND password = '" + pass + "';";
 
-            ps = conn.prepareStatement(sql);
+            ps = conn1.prepareStatement(sql);
             rs = ps.executeQuery();
             st = rs.next();
 
@@ -40,8 +43,24 @@ public class UsuarioDAO {
                 u.setNombre(rs.getString("nombre_usuario"));
                 u.setApellidos(rs.getString("apellido_usuario"));
                 u.setEmail(rs.getString("email"));
-            }
+            } 
+            else {
+                conn2 = UConnection.getConnection2();
+                sql = "SELECT usuario, password, nombre_usuario, apellido_usuario, email FROM usuario WHERE usuario = '" + user + "' AND password = '" + pass + "';";
 
+                ps = conn2.prepareStatement(sql);
+                rs = ps.executeQuery();
+                st = rs.next();
+
+                if (st) {
+                    u = new Usuario();
+                    u.setUsuario(rs.getString("usuario"));
+                    u.setPassword(rs.getString("password"));
+                    u.setNombre(rs.getString("nombre_usuario"));
+                    u.setApellidos(rs.getString("apellido_usuario"));
+                    u.setEmail(rs.getString("email"));
+                }
+            }
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {
@@ -55,7 +74,7 @@ public class UsuarioDAO {
         return st;
 
     }
-    
+
     public boolean nuevoUsuario(Usuario u) {
         boolean msn = false;
         Connection conn = null;

@@ -34,7 +34,7 @@ public class DelitoDAO implements Serializable {
         
         try {
             conn = UConnection.getConnection1();
-            String sql = "SELECT * FROM delito;";
+            String sql = "SELECT id_delito, nombre_delito FROM delito;";
             
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();

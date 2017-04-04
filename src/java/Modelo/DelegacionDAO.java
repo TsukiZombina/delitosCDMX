@@ -33,16 +33,16 @@ public class DelegacionDAO implements Serializable {
         PreparedStatement pstm = null;
         ResultSet rs = null;
         String sql = "";
+        Delegacion d;
         
         try {
+            listaDelegaciones = new ArrayList<>();
+            
             conn1 = UConnection.getConnection1();
-            sql = "SELECT delitosCDMX_Norte_General.delegacion.id_delegacion, delitosCDMX_Norte_General.delegacion.nombre_delegacion FROM delitosCDMX_Norte_General.delegacion";
+            sql = "SELECT id_delegacion, nombre_delegacion FROM delegacion";
             
             pstm = conn1.prepareStatement(sql);
             rs = pstm.executeQuery();
-
-            listaDelegaciones = new ArrayList<>();
-            Delegacion d;
 
             while (rs.next()) {
                 d = new Delegacion();
@@ -52,7 +52,7 @@ public class DelegacionDAO implements Serializable {
             }
             
             conn2 = UConnection.getConnection2();
-            sql = "SELECT delitosCDMX_Sur_General.delegacion.id_delegacion, delitosCDMX_Sur_General.delegacion.nombre_delegacion FROM delitosCDMX_Sur_General.delegacion";
+            sql = "SELECT id_delegacion, nombre_delegacion FROM delegacion";
             
             pstm = conn2.prepareStatement(sql);
             rs = pstm.executeQuery();

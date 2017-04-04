@@ -36,7 +36,7 @@ public class ColoniaDAO implements Serializable {
 
         try {
             conn = UConnection.getConnection1();
-            String sql = "SELECT * FROM colonia;";
+            String sql = "SELECT id_colonia, nombre_colonia FROM colonia;";
 
             pstm = conn.prepareStatement(sql);
             rs = pstm.executeQuery();
