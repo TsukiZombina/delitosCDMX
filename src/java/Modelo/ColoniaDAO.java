@@ -35,7 +35,7 @@ public class ColoniaDAO implements Serializable {
         ResultSet rs = null;
 
         try {
-            conn = UConnection.getConnection();
+            conn = UConnection.getConnection1();
             String sql = "SELECT * FROM colonia;";
 
             pstm = conn.prepareStatement(sql);
@@ -104,7 +104,7 @@ public class ColoniaDAO implements Serializable {
         ResultSet rs = null;
 
         try {
-            conn = UConnection.getConnection();
+            conn = UConnection.getConnection1();
             String sql = "INSERT INTO colonia (nombre_colonia) VALUES ('" + nombreColonia + "');";
             pstm = conn.prepareStatement(sql);
             pstm.executeUpdate();

@@ -21,19 +21,24 @@ public class ReporteDAO {
     ArrayList<Reporte> listaReportes;
 
     public ArrayList<Reporte> buscarTodo() {
-        Connection conn = null;
+        Connection conn1 = null;
+        Connection conn2 = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
+        String sql = "";
+        Reporte r;
 
         try {
-            conn = UConnection.getConnection();
-            String sql = "SELECT * FROM reporte LIMIT 15;";
-
-            ps = conn.prepareStatement(sql);
+            //Maneja a que fragmento horizontal enviar la consulta.
+            
+            conn1 = UConnection.getConnection1();
+            //La base maneja la union de los fragmentos verticales.
+            sql = "SELECT delitoscdmx_norte_general.reporte.id_reporte, delitoscdmx_norte_general.reporte.fecha, delitoscdmx_norte_especifico.reporte.hora, delitoscdmx_norte_especifico.reporte.calle1, delitoscdmx_norte_especifico.reporte.calle2, delitoscdmx_norte_especifico.reporte.coord_x, delitoscdmx_norte_especifico.reporte.coord_y, delitoscdmx_norte_especifico.reporte.cuadrante, delitoscdmx_norte_general.reporte.id_colonia, delitoscdmx_norte_general.reporte.id_delegacion, delitoscdmx_norte_general.reporte.id_delito, delitoscdmx_norte_especifico.reporte.descripcion "
+                    + "FROM (delitoscdmx_norte_general.reporte INNER JOIN delitoscdmx_norte_especifico.reporte ON delitoscdmx_norte_general.reporte.id_reporte = delitoscdmx_norte_especifico.reporte.id_reporte) LIMIT 50";
+            ps = conn1.prepareStatement(sql);
             rs = ps.executeQuery();
 
             listaReportes = new ArrayList<>();
-            Reporte r;
 
             while (rs.next()) {
                 r = new Reporte();
@@ -51,6 +56,31 @@ public class ReporteDAO {
                 r.setDescripcion(rs.getString("descripcion"));
                 listaReportes.add(r);
             }
+
+            conn2 = UConnection.getConnection2();
+            //La base maneja la union de los fragmentos verticales.
+            sql = "SELECT delitoscdmx_sur_general.reporte.id_reporte, delitoscdmx_sur_general.reporte.fecha, delitoscdmx_sur_especifico.reporte.hora, delitoscdmx_sur_especifico.reporte.calle1, delitoscdmx_sur_especifico.reporte.calle2, delitoscdmx_sur_especifico.reporte.coord_x, delitoscdmx_sur_especifico.reporte.coord_y, delitoscdmx_sur_especifico.reporte.cuadrante, delitoscdmx_sur_general.reporte.id_colonia, delitoscdmx_sur_general.reporte.id_delegacion, delitoscdmx_sur_general.reporte.id_delito, delitoscdmx_sur_especifico.reporte.descripcion "
+                    + "FROM (delitoscdmx_sur_general.reporte INNER JOIN delitoscdmx_sur_especifico.reporte ON delitoscdmx_sur_general.reporte.id_reporte = delitoscdmx_sur_especifico.reporte.id_reporte) LIMIT 50";
+            ps = conn2.prepareStatement(sql);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                r = new Reporte();
+                r.setId_reporte(rs.getInt("id_reporte"));
+                r.setFecha(rs.getString("fecha"));
+                r.setHora(rs.getString("hora"));
+                r.setCalle1(rs.getString("calle1"));
+                r.setCalle2(rs.getString("calle2"));
+                r.setCoord_x(rs.getString("coord_x"));
+                r.setCoord_y(rs.getString("coord_y"));
+                r.setCuadrante(rs.getString("cuadrante"));
+                r.setColonia(ColoniaDAO.get().buscarPorId(rs.getInt("id_colonia")));
+                r.setDelegacion(DelegacionDAO.get().buscarPorId(rs.getInt("id_delegacion")));
+                r.setDelito(DelitoDAO.get().buscarPorId(rs.getInt("id_delito")));
+                r.setDescripcion(rs.getString("descripcion"));
+                listaReportes.add(r);
+            }
+
         } catch (SQLException ex) {
             System.out.println(ex);
         } finally {
@@ -64,17 +94,32 @@ public class ReporteDAO {
         return listaReportes;
     }
 
-    public Reporte buscarPorId(String id_reporte) {
-        Connection conn = null;
+    public Reporte buscarPorId(String id_reporte, String id_delegacion) {
+        Connection conn1 = null;
+        Connection conn2 = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
+        String sql = "";
         Reporte r = new Reporte();
 
         try {
-            conn = UConnection.getConnection();
-            String sql = "SELECT * FROM reporte WHERE id_reporte = " + id_reporte + ";";
+            //Maneja a que fragmento horizontal enviar la consulta.
+            if (id_delegacion.equals("3") || id_delegacion.equals("4") || id_delegacion.equals("7") || id_delegacion.equals("8") || id_delegacion.equals("9") || id_delegacion.equals("10") || id_delegacion.equals("12") || id_delegacion.equals("16")) {
+                conn1 = UConnection.getConnection1();
+                //La base maneja la union de los fragmentos verticales.
+                sql = "SELECT delitoscdmx_norte_general.reporte.id_reporte, delitoscdmx_norte_general.reporte.fecha, delitoscdmx_norte_especifico.reporte.hora, delitoscdmx_norte_especifico.reporte.calle1, delitoscdmx_norte_especifico.reporte.calle2, delitoscdmx_norte_especifico.reporte.coord_x, delitoscdmx_norte_especifico.reporte.coord_y, delitoscdmx_norte_especifico.reporte.cuadrante, delitoscdmx_norte_general.reporte.id_colonia, delitoscdmx_norte_general.reporte.id_delegacion, delitoscdmx_norte_general.reporte.id_delito, delitoscdmx_norte_especifico.reporte.descripcion "
+                        + "FROM (delitoscdmx_norte_general.reporte INNER JOIN delitoscdmx_norte_especifico.reporte ON delitoscdmx_norte_general.reporte.id_reporte = delitoscdmx_norte_especifico.reporte.id_reporte) "
+                        + "WHERE delitoscdmx_norte_general.reporte.id_reporte = " + id_reporte;
+                ps = conn1.prepareStatement(sql);
+            } else {
+                conn2 = UConnection.getConnection2();
+                //La base maneja la union de los fragmentos verticales.
+                sql = "SELECT delitoscdmx_sur_general.reporte.id_reporte, delitoscdmx_sur_general.reporte.fecha, delitoscdmx_sur_especifico.reporte.hora, delitoscdmx_sur_especifico.reporte.calle1, delitoscdmx_sur_especifico.reporte.calle2, delitoscdmx_sur_especifico.reporte.coord_x, delitoscdmx_sur_especifico.reporte.coord_y, delitoscdmx_sur_especifico.reporte.cuadrante, delitoscdmx_sur_general.reporte.id_colonia, delitoscdmx_sur_general.reporte.id_delegacion, delitoscdmx_sur_general.reporte.id_delito, delitoscdmx_sur_especifico.reporte.descripcion "
+                        + "FROM (delitoscdmx_sur_general.reporte INNER JOIN delitoscdmx_sur_especifico.reporte ON delitoscdmx_sur_general.reporte.id_reporte = delitoscdmx_sur_especifico.reporte.id_reporte) "
+                        + "WHERE delitoscdmx_sur_general.reporte.id_reporte = " + id_reporte;
+                ps = conn2.prepareStatement(sql);
+            }
 
-            ps = conn.prepareStatement(sql);
             rs = ps.executeQuery();
 
             rs.next();
@@ -110,7 +155,7 @@ public class ReporteDAO {
         ResultSet rs = null;
 
         try {
-            conn = UConnection.getConnection();
+            conn = UConnection.getConnection1();
 
             String sql = buildQuery(fecha1, fecha2, hora1, hora2, listaDelito, calle1, calle2, colonia, listaDelegacion, coord_x, coord_y);
             System.out.println(sql);
@@ -148,14 +193,14 @@ public class ReporteDAO {
         }
         return listaReportes;
     }
-    
+
     public boolean nuevoReporte(Reporte r) {
         boolean msn = false;
         Connection conn = null;
         PreparedStatement ps = null;
 
         try {
-            conn = UConnection.getConnection();
+            conn = UConnection.getConnection1();
             String sql = "INSERT INTO reporte (fecha, hora, calle1, calle2, coord_x, coord_y, cuadrante, id_colonia, id_delegacion, id_delito, descripcion) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
             ps = conn.prepareStatement(sql);

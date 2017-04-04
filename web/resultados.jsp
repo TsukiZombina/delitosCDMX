@@ -58,7 +58,7 @@
                                     <td>${i.getCuadrante()}</td>
                                     <td>${i.getDelito().getNombre_delito()}</td>
                                     <td>${i.getDescripcion()}</td>
-                                    <td><form method="post" action="datosDelito"><input type="hidden" name="idButton" value="${i.getId_reporte()}"><input class="btn btn-primary" value="Ver" style="margin: 0;" type="submit"></form></td>
+                                    <td><form method="post" action="datosDelito"><input type="hidden" name="idButton" value="${i.getId_reporte()}"><input type="hidden" name="idDeleg" value="${i.getDelegacion().getid_delegacion()}"><input class="btn btn-primary" value="Ver" style="margin: 0;" type="submit"></form></td>
                                 </tr>
                             </c:forEach>
                         </tbody> 

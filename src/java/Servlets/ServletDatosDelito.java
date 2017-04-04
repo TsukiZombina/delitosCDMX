@@ -21,7 +21,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/datosDelito")
 public class ServletDatosDelito extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -48,8 +47,9 @@ public class ServletDatosDelito extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id_reporte = request.getParameter("idButton").trim();
+        String id_delegacion = request.getParameter("idDeleg").trim();
         
-        Reporte reporte = new ReporteDAO().buscarPorId(id_reporte);
+        Reporte reporte = new ReporteDAO().buscarPorId(id_reporte, id_delegacion);
         
         response.setContentType("text/html;charset=UTF-8");
         request.setAttribute("reporte", reporte);

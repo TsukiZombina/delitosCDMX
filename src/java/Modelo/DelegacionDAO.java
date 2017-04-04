@@ -33,7 +33,7 @@ public class DelegacionDAO implements Serializable {
         ResultSet rs = null;
         
         try {
-            conn = UConnection.getConnection();
+            conn = UConnection.getConnection1();
             String sql = "SELECT * FROM delegacion;";
             
             pstm = conn.prepareStatement(sql);

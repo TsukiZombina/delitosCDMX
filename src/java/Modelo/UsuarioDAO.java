@@ -26,7 +26,7 @@ public class UsuarioDAO {
         boolean st = false;
 
         try {
-            conn = UConnection.getConnection();
+            conn = UConnection.getConnection1();
             String sql = "SELECT * FROM usuario WHERE usuario = '" + user + "' AND password = '" + pass + "';";
 
             ps = conn.prepareStatement(sql);
@@ -62,7 +62,7 @@ public class UsuarioDAO {
         PreparedStatement ps = null;
 
         try {
-            conn = UConnection.getConnection();
+            conn = UConnection.getConnection1();
             String sql = "INSERT INTO usuario (usuario, password, nombre_usuario, apellido_usuario, email) VALUES (?,?,?,?,?)";
 
             ps = conn.prepareStatement(sql);
